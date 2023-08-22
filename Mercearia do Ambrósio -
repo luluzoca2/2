@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+	// Defina a localização para usar caracteres acentuados (pode variar dependendo do sistema)
+    setlocale(LC_ALL, "Portuguese");
+    
+    int codigoProduto, quantidade;
+    double precoUnitario, valorTotal, valorDesconto, valorFinal;
+
+    printf("Digite o código do produto (1 a 4): ");
+    scanf("%d", &codigoProduto);
+
+    printf("Digite a quantidade comprada: ");
+    scanf("%d", &quantidade);
+
+    if (codigoProduto == 1) {
+        precoUnitario = 5.30;
+    } else if (codigoProduto == 2) {
+        precoUnitario = 6.00;
+    } else if (codigoProduto == 3) {
+        precoUnitario = 3.20;
+    } else if (codigoProduto == 4) {
+        precoUnitario = 2.50;
+    } else {
+        printf("Código de produto inválido.\n");
+        return 1;
+    }
+
+    valorTotal = precoUnitario * quantidade;
+
+    if (quantidade >= 15 || valorTotal >= 40.0) {
+        valorDesconto = valorTotal * 0.15;
+        valorFinal = valorTotal - valorDesconto;
+        printf("Valor a pagar com desconto: R$ %.2lf\n", valorFinal);
+    } else {
+        printf("Valor a pagar: R$ %.2lf\n", valorTotal);
+    }
+
+    return 0;
+}
